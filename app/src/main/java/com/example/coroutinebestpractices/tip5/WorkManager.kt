@@ -3,6 +3,7 @@ package com.example.coroutinebestpractices.tip5
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 
 fun main() {
@@ -26,6 +27,7 @@ class WorkManager {
     }
 
     fun cancelAllWork() {
-        job.cancel()
+        scope.coroutineContext.cancelChildren()
+        //job.cancel()
     }
 }
